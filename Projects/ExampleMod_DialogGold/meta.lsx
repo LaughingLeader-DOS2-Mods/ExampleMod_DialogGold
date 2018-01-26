@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" time="1516936674" />
+    <version major="3" minor="1" revision="5" build="0" />
+    <region id="MetaData">
+        <node id="root">
+            <attribute id="Module" value="97a733f6-2315-48c0-ac86-bfdb3898cd4d" type="23" />
+            <attribute id="Name" value="ExampleMod_DialogGold" type="23" />
+            <attribute id="Type" value="Add-on" type="23" />
+            <attribute id="UUID" value="fa3b69cc-4c2b-418b-816d-675f8fe32731" type="23" />
+        </node>
+    </region>
+</save>

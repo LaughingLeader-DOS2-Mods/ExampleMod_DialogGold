@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" time="1516938539" />
+    <version major="3" minor="1" revision="5" build="0" />
+    <region id="ScriptFlags">
+        <node id="root">
+            <children>
+                <node id="ScriptFlag">
+                    <attribute id="Description" value="Checks the player for a large gold amount." type="23" />
+                    <attribute id="Script" value='CONDITION IsMagicPocketsGold(%EMDG_PlayerSpeakerIndex_78410959-f9da-45af-aa65-efaf285ab4a7, &quot;&gt;=&quot;, %EMDG_CheckPlayerGold_Large_35619ab7-7010-4b49-ab20-1011f31b413d)&#x0D;&#x0A;CHECK &quot;c1&quot;' type="23" />
+                    <attribute id="UUID" value="dc16bdcf-7117-4481-837c-c3992991f985" type="31" />
+                    <attribute id="name" value="EMDG_PlayerGold_Large" type="22" />
+                </node>
+                <node id="ScriptFlag">
+                    <attribute id="Description" value="Checks the player for a medium gold amount." type="23" />
+                    <attribute id="Script" value='CONDITION IsMagicPocketsGold(%EMDG_PlayerSpeakerIndex_78410959-f9da-45af-aa65-efaf285ab4a7, &quot;&gt;=&quot;, %EMDG_CheckPlayerGold_Medium_e747e1d9-c47d-4c84-bcf9-55bc111192dc)&#x0D;&#x0A;CHECK &quot;c1&quot;' type="23" />
+                    <attribute id="UUID" value="2ab73836-65cc-43ac-9db1-dc7ea6530de1" type="31" />
+                    <attribute id="name" value="EMDG_PlayerGold_Medium" type="22" />
+                </node>
+                <node id="ScriptFlag">
+                    <attribute id="Description" value="Checks the player for a small gold amount." type="23" />
+                    <attribute id="Script" value='CONDITION IsMagicPocketsGold(%EMDG_PlayerSpeakerIndex_78410959-f9da-45af-aa65-efaf285ab4a7, &quot;&gt;=&quot;, %EMDG_CheckPlayerGold_Small_f304a8f4-27cc-4175-8e80-2c8c94a1da71)&#x0D;&#x0A;CHECK &quot;c1&quot;' type="23" />
+                    <attribute id="UUID" value="926a8f3b-754d-4314-aa2b-14e2196379f5" type="31" />
+                    <attribute id="name" value="EMDG_PlayerGold_Small" type="22" />
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

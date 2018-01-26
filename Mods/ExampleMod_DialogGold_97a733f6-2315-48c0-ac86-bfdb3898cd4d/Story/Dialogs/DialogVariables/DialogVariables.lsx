@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" time="1516944427" />
+    <version major="3" minor="1" revision="5" build="0" />
+    <region id="DialogVariables">
+        <node id="root">
+            <children>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="9999999" type="23" />
+                    <attribute id="Description" value="Checks the player&apos;s gold by this amount." type="23" />
+                    <attribute id="UUID" value="35619ab7-7010-4b49-ab20-1011f31b413d" type="31" />
+                    <attribute id="name" value="EMDG_CheckPlayerGold_Large" type="22" />
+                    <attribute id="type" value="Int" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="9999999" type="23" />
+                    <attribute id="Description" value="Checks the player&apos;s gold by this amount." type="23" />
+                    <attribute id="UUID" value="e747e1d9-c47d-4c84-bcf9-55bc111192dc" type="31" />
+                    <attribute id="name" value="EMDG_CheckPlayerGold_Medium" type="22" />
+                    <attribute id="type" value="Int" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="9999999" type="23" />
+                    <attribute id="Description" value="Checks the player&apos;s gold by this amount." type="23" />
+                    <attribute id="UUID" value="f304a8f4-27cc-4175-8e80-2c8c94a1da71" type="31" />
+                    <attribute id="name" value="EMDG_CheckPlayerGold_Small" type="22" />
+                    <attribute id="type" value="Int" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="2" type="23" />
+                    <attribute id="Description" value="The player&apos;s speaker index in the dialog. Used for the gold check script flag." type="23" />
+                    <attribute id="UUID" value="78410959-f9da-45af-aa65-efaf285ab4a7" type="31" />
+                    <attribute id="name" value="EMDG_PlayerSpeakerIndex" type="22" />
+                    <attribute id="type" value="Int" type="23" />
+                </node>
+                <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="0" type="23" />
+                    <attribute id="Description" value="A random amount of gold given by the goblin." type="23" />
+                    <attribute id="UUID" value="c5b27d49-cc84-47f1-9ba0-fdd10523943b" type="31" />
+                    <attribute id="name" value="EMDG_RandomGoblinGold" type="22" />
+                    <attribute id="type" value="Int" type="23" />
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

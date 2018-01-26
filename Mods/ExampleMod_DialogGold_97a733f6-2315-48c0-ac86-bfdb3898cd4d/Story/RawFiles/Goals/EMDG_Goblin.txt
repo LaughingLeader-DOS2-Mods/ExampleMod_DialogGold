@@ -1,0 +1,111 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+//DB_EMDG_GoblinTrader(_DialogVar, _GoldAmount, _TransferFlag)
+DB_EMDG_GoblinTrader("EMDG_CheckPlayerGold_Small_f304a8f4-27cc-4175-8e80-2c8c94a1da71", 55, "EMDG_TransferGold_Small");
+DB_EMDG_GoblinTrader("EMDG_CheckPlayerGold_Medium_e747e1d9-c47d-4c84-bcf9-55bc111192dc", 201, "EMDG_TransferGold_Medium");
+DB_EMDG_GoblinTrader("EMDG_CheckPlayerGold_Large_35619ab7-7010-4b49-ab20-1011f31b413d", 577, "EMDG_TransferGold_Large");
+
+EMDG_SetDialogVariables();
+KBSECTION
+//REGION INIT
+//Set the dialog variable amounts to the values in our database.
+PROC
+EMDG_SetDialogVariables()
+AND
+DB_EMDG_GoblinTrader(_DialogVar, _GoldAmount, _TransferFlag)
+THEN
+DialogSetVariableInt("EMDG_GoblinTrader", _DialogVar, _GoldAmount);
+//END_REGION
+
+//REGION HELPERS
+//Re-usable call for displaying a color-formatted status text for a gold amount.
+PROC
+EMDG_WriteGoldMessage((CHARACTERGUID)_Character, (INTEGER)_GoldAmount, (STRING)_Message, (STRING)_Color)
+AND
+IntegertoString(_GoldAmount, _GoldStr)
+AND
+StringConcatenate(_GoldStr, _Message, _CombinedMessage)
+AND
+StringConcatenate("<font color='#", _Color, _HTMLPrefix1)
+AND
+StringConcatenate(_HTMLPrefix1, "'>", _HTMLPrefix2)
+AND
+StringConcatenate(_HTMLPrefix2, _CombinedMessage, _FormattedMessage)
+AND
+StringConcatenate(_FormattedMessage, "</font>", _StatusText)
+THEN
+CharacterStatusText(_Character, _StatusText);
+
+QRY
+EMDG_QRY_ClearObjectFlag((CHARACTERGUID)_Character, (STRING)_Flag)
+THEN
+ObjectClearFlag(_Character, _Flag);
+//END_REGION
+
+//REGION FLAG_EVENTS
+IF
+ObjectFlagSet(_TransferFlag, (CHARACTERGUID)_Player, _Instance)
+AND
+EMDG_QRY_ClearObjectFlag(_Player, _TransferFlag)
+AND
+DialogGetInvolvedNPC(_Instance, 1, (CHARACTERGUID)_Goblin)
+AND
+DB_EMDG_GoblinTrader(_DialogVar, _GoldAmount, _TransferFlag)
+AND
+IntegerProduct(_GoldAmount, -1, _RemoveAmount)
+THEN
+CharacterAddGold(_Goblin, _GoldAmount);
+CharacterAddGold(_Player, _RemoveAmount);
+EMDG_WriteGoldMessage(_Goblin, _GoldAmount, " gold added.", "FFD700");
+EMDG_WriteGoldMessage(_Player, _RemoveAmount, " gold removed.", "FF0000");
+
+IF
+ObjectFlagSet("EMDG_RollGoldAmount", (CHARACTERGUID)_Goblin, _Instance)
+AND
+EMDG_QRY_ClearObjectFlag(_Goblin, "EMDG_RollGoldAmount")
+AND
+Random(5, _RanResult)
+AND
+IntegerSum(_RanResult, 1, _Multiplier)
+AND
+IntegerProduct(25, _Multiplier, _RandomGoldAmount)
+THEN
+DialogSetVariableIntForInstance(_Instance, "EMDG_RandomGoblinGold_c5b27d49-cc84-47f1-9ba0-fdd10523943b", _RandomGoldAmount);
+DB_EMDG_GoblinRandomGoldAmount(_Instance, _RandomGoldAmount);
+
+IF
+ObjectFlagSet("EMDG_GivePlayerGold", (CHARACTERGUID)_Goblin, _Instance)
+AND
+EMDG_QRY_ClearObjectFlag(_Goblin, "EMDG_GivePlayerGold")
+AND
+DialogGetInvolvedPlayer(_Instance, 1, (CHARACTERGUID)_Player)
+AND
+DB_EMDG_GoblinRandomGoldAmount(_Instance, _RandomGoldAmount)
+THEN
+CharacterAddGold(_Player, _RandomGoldAmount);
+EMDG_WriteGoldMessage(_Player, _RandomGoldAmount, " gold added.", "FFD700");
+NOT DB_EMDG_GoblinRandomGoldAmount(_Instance, _RandomGoldAmount);
+//END_REGION
+
+//REGION DEBUG
+IF
+CharacterUsedItem(_Player, ITEMGUID_EMDG_Test_Lever_BigGold_ceafbcc2-45c7-410e-b1c7-3aa8f348afd7)
+AND
+DB_CurrentLevel("EMDG_TestLevel")
+THEN
+CharacterAddGold(_Player, 1000);
+EMDG_WriteGoldMessage(_Player, 1000, " gold added.", "FFD700");
+
+IF
+CharacterUsedItem(_Player, ITEMGUID_EMDG_Test_Lever_MinGold_2861d9c1-bd15-4052-8404-3fc8460810b0)
+AND
+DB_CurrentLevel("EMDG_TestLevel")
+THEN
+CharacterAddGold(_Player, 55);
+EMDG_WriteGoldMessage(_Player, 55, " gold added.", "FFD700");
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "ExampleMod_DialogGold"
