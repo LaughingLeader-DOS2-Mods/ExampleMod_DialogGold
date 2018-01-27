@@ -47,11 +47,11 @@ ObjectClearFlag(_Character, _Flag);
 IF
 ObjectFlagSet(_TransferFlag, (CHARACTERGUID)_Player, _Instance)
 AND
+DB_EMDG_GoblinTrader(_DialogVar, _GoldAmount, _TransferFlag)
+AND
 EMDG_QRY_ClearObjectFlag(_Player, _TransferFlag)
 AND
 DialogGetInvolvedNPC(_Instance, 1, (CHARACTERGUID)_Goblin)
-AND
-DB_EMDG_GoblinTrader(_DialogVar, _GoldAmount, _TransferFlag)
 AND
 IntegerProduct(_GoldAmount, -1, _RemoveAmount)
 THEN
