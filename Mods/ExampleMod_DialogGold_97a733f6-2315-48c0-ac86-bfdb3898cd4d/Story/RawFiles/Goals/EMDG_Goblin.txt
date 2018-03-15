@@ -56,7 +56,8 @@ AND
 IntegerProduct(_GoldAmount, -1, _RemoveAmount)
 THEN
 CharacterAddGold(_Goblin, _GoldAmount);
-CharacterAddGold(_Player, _RemoveAmount);
+//To work via magic pockets
+UserAddGold(_Player, _RemoveAmount);
 EMDG_WriteGoldMessage(_Goblin, _GoldAmount, " gold added.", "FFD700");
 EMDG_WriteGoldMessage(_Player, _RemoveAmount, " gold removed.", "FF0000");
 
