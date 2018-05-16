@@ -1,4 +1,9 @@
-#Logs
+# SourceControlGenerator #
+##########################
+SourceControlGenerator.json
+
+# Logs 		#
+#############
 *log.txt
 *.log
 *.ailog
